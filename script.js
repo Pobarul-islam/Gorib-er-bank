@@ -1,44 +1,38 @@
- // Deposit
-let depositValue = document.getElementById('deposit-value');
-let depositOutput = document.getElementById('deposit-output');
- // Withdraw
-let withdrawValue = document.getElementById('withdraw-value');
-let withdrawoutput = document.getElementById('withdraw-output');
-// Balance
-let balanceOutput = document.getElementById('balance-output');
+// Deposit
+let depositValue = document.getElementById("deposit-value");
+let depositOutput = document.getElementById("deposit-output");
 
+//Withdraw
+let withdrawValue = document.getElementById("withdraw-value");
+let withdrawOutput = document.getElementById("withdraw-output");
+
+//Total Balance
+let balanceOutput = document.getElementById("balance-output");
 
 function addMoney(currentAmount, newAmount) {
-  return Number(currentAmount) + Number( newAmount);
+  return Number(currentAmount) + Number(newAmount);
 }
 
-function deposit(){
-//  depositOutput.innerText =  Number(depositOutput.innerText) + Number(depositValue.value) ;
-  
-  const totalBalance = addMoney(depositOutput.innerText, depositValue.value);
-  
-  depositOutput.innerText = totalBalance;
+function getMoney(currentAmount, newAmount) {
+  return Number(currentAmount) - Number(newAmount);
+}
 
-  balanceOutput.innerText = totalBalance
-    ;
+function deposit() {
+  const totalDeposit = addMoney(depositOutput.innerText, depositValue.value);
+  depositOutput.innerText = totalDeposit;
 
-//  balanceOutput.innerText = Number(balanceOutput.innerText) + Number(depositValue.value) ;
+  const totalBalance = addMoney(balanceOutput.innerText, depositValue.value);
+  balanceOutput.innerText = totalBalance;
 
+  depositValue.value = "";
+}
 
- depositValue.value = '';
- 
-};
+function withdraw() {
+  const totalWithdraw = addMoney(withdrawOutput.innerText, withdrawValue.value);
+  withdrawOutput.innerText = totalWithdraw;
 
+  const totalBalance = getMoney(balanceOutput.innerText, withdrawValue.value);
+  balanceOutput.innerText = totalBalance;
 
-function withdraw(){
-// withdrawoutput.innerText = Number(withdrawoutput.innerText) + Number(withdrawValue.value);
-  
-  const totalWithdraw = addMoney(withdrawoutput.innerText, withdrawValue.value);
-  
-  withdrawoutput.innerText = totalWithdraw;
-balanceOutput.innerText = Number(balanceOutput.innerText) -  Number(withdrawValue.value);
-  
-  
-withdrawValue.value = ''
- 
+  withdrawValue.value = "";
 }
